@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        基于PyTorch的CIFAR10小记 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar radius">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Adam Zuo</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基于PyTorch的CIFAR10小记"><span class="toc-text">基于PyTorch的CIFAR10小记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CIFAR-10数据集介绍"><span class="toc-text">CIFAR-10数据集介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#切入正题"><span class="toc-text">切入正题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#关于数据集"><span class="toc-text">关于数据集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开搞"><span class="toc-text">开搞</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#导入基础包"><span class="toc-text">导入基础包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建数据集"><span class="toc-text">创建数据集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建数据加载器"><span class="toc-text">创建数据加载器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建网络"><span class="toc-text">创建网络</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#CNN-1"><span class="toc-text">CNN_1</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#CNN-2"><span class="toc-text">CNN_2</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#定义训练函数和测试函数"><span class="toc-text">定义训练函数和测试函数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#定义训练函数"><span class="toc-text">定义训练函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#定义测试函数"><span class="toc-text">定义测试函数</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在测试集上运行网络"><span class="toc-text">在测试集上运行网络</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#训练结果"><span class="toc-text">训练结果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代码"><span class="toc-text">代码</span></a></li></ol></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        基于PyTorch的CIFAR10小记
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2020-04-01 22:03:11</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#pytorch" title="pytorch">pytorch</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#cifar-10" title="cifar-10">cifar-10</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h1 id="基于PyTorch的CIFAR10小记"><a href="#基于PyTorch的CIFAR10小记" class="headerlink" title="基于PyTorch的CIFAR10小记"></a>基于PyTorch的CIFAR10小记</h1><h2 id="CIFAR-10数据集介绍"><a href="#CIFAR-10数据集介绍" class="headerlink" title="CIFAR-10数据集介绍"></a>CIFAR-10数据集介绍</h2><p>CIFAR-10数据集由10个类的60000个32x32彩色图像组成，每个类有6000个图像。有50000个训练图像和10000个测试图像。<br>数据集分为五个训练批次和一个测试批次，每个批次有10000个图像。测试批次包含来自每个类别的恰好1000个随机选择的图像。训练批次以随机顺序包含剩余图像，但一些训练批次可能包含来自一个类别的图像比另一个更多。总体来说，五个训练集之和包含来自每个类的正好5000张图像。<br>以下是数据集中的类，以及来自每个类的10个随机图像：</p>
+<p><img src="5a8cd1b0076ff-1551279741115.png" alt="CIFAR-10.png"></p>
+<p>下载地址：<a href="http://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz" target="_blank" rel="noopener">http://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz</a> </p>
+<h2 id="切入正题"><a href="#切入正题" class="headerlink" title="切入正题"></a>切入正题</h2><p>这次实践主要参考PyTorch官方的教程<a href="https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html#sphx-glr-beginner-blitz-cifar10-tutorial-py" target="_blank" rel="noopener">https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html#sphx-glr-beginner-blitz-cifar10-tutorial-py</a>，在此基础上进行一些修改，由于主要目的是了解PyTorch的编程方法，所以在数据集那里并没有从训练集中切分验证集出来，在训练时仅观察了loss的变化，最后使用测试集观察准确率。</p>
+<h3 id="关于数据集"><a href="#关于数据集" class="headerlink" title="关于数据集"></a>关于数据集</h3><p>CIFAR10的数据集可以通过torchvision进行下载，但是下载速度太慢，建议使用迅雷下载</p>
+<h3 id="开搞"><a href="#开搞" class="headerlink" title="开搞"></a>开搞</h3><h4 id="导入基础包"><a href="#导入基础包" class="headerlink" title="导入基础包"></a>导入基础包</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torchvision</span><br><span class="line"><span class="keyword">import</span> torchvision.transforms <span class="keyword">as</span> transforms</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置一些参数</span></span><br><span class="line">EPOCHS = <span class="number">20</span></span><br><span class="line">BATCH_SIZE = <span class="number">512</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="创建数据集"><a href="#创建数据集" class="headerlink" title="创建数据集"></a>创建数据集</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个转换器，将torchvision数据集的输出范围[0,1]转换为归一化范围的张量[-1,1]。</span></span><br><span class="line">transform = transforms.Compose([</span><br><span class="line">    transforms.ToTensor(),</span><br><span class="line">    transforms.Normalize((<span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.5</span>), (<span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.5</span>))</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建训练集</span></span><br><span class="line"><span class="comment"># root -- 数据存放的目录</span></span><br><span class="line"><span class="comment"># train -- 明确是否是训练集</span></span><br><span class="line"><span class="comment"># download -- 是否需要下载</span></span><br><span class="line"><span class="comment"># transform -- 转换器，将数据集进行转换</span></span><br><span class="line">trainset = torchvision.datasets.CIFAR10(</span><br><span class="line">    root=<span class="string">'./data'</span>,</span><br><span class="line">    train=<span class="literal">True</span>,</span><br><span class="line">    download=<span class="literal">True</span>,</span><br><span class="line">    transform=transform</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建测试集</span></span><br><span class="line">testset = torchvision.datasets.CIFAR10(</span><br><span class="line">    root=<span class="string">'./data'</span>,</span><br><span class="line">    train=<span class="literal">False</span>,</span><br><span class="line">    download=<span class="literal">True</span>,</span><br><span class="line">    transform=transform</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="创建数据加载器"><a href="#创建数据加载器" class="headerlink" title="创建数据加载器"></a>创建数据加载器</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建训练/测试加载器，</span></span><br><span class="line"><span class="comment"># trainset/testset -- 数据集</span></span><br><span class="line"><span class="comment"># batch_size -- 不解释</span></span><br><span class="line"><span class="comment"># shuffle -- 是否打乱顺序</span></span><br><span class="line">trainloader = torch.utils.data.DataLoader(</span><br><span class="line">    trainset, batch_size=BATCH_SIZE, shuffle=<span class="literal">True</span>)</span><br><span class="line">testloader = torch.utils.data.DataLoader(</span><br><span class="line">    testset, batch_size=BATCH_SIZE, shuffle=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 类别标签</span></span><br><span class="line">classes = (<span class="string">'plane'</span>, <span class="string">'car'</span>, <span class="string">'bird'</span>, <span class="string">'cat'</span>,</span><br><span class="line">           <span class="string">'deer'</span>, <span class="string">'dog'</span>, <span class="string">'frog'</span>, <span class="string">'horse'</span>, <span class="string">'ship'</span>, <span class="string">'truck'</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建网络"><a href="#创建网络" class="headerlink" title="创建网络"></a>创建网络</h4><p>我这里定义了两个CNN网络，分别保存在<code>CNN_1.py</code>和<code>CNN_2.py</code>文件中</p>
+<h5 id="CNN-1"><a href="#CNN-1" class="headerlink" title="CNN_1"></a>CNN_1</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># CNN_1.py</span></span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 学习率</span></span><br><span class="line">LR = <span class="number">0.005</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Net</span><span class="params">(torch.nn.Module)</span>:</span></span><br><span class="line">    <span class="string">"""Some Information about Net"""</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        super(Net, self).__init__()</span><br><span class="line">        self.conv1 = torch.nn.Sequential(</span><br><span class="line">            torch.nn.Conv2d(<span class="number">3</span>, <span class="number">16</span>, <span class="number">3</span>, padding=<span class="number">1</span>),  <span class="comment"># 3*32*32 -&gt; 16*32*32</span></span><br><span class="line">            torch.nn.ReLU(),</span><br><span class="line">            torch.nn.MaxPool2d(<span class="number">2</span>, <span class="number">2</span>)  <span class="comment"># 16*32*32 -&gt; 16*16*16</span></span><br><span class="line">        )</span><br><span class="line">        self.conv2 = torch.nn.Sequential(</span><br><span class="line">            torch.nn.Conv2d(<span class="number">16</span>, <span class="number">32</span>, <span class="number">3</span>, padding=<span class="number">1</span>),  <span class="comment"># 16*16*16 -&gt; 32*16*16</span></span><br><span class="line">            torch.nn.ReLU(),</span><br><span class="line">            torch.nn.MaxPool2d(<span class="number">2</span>, <span class="number">2</span>)  <span class="comment"># 32*16*16 -&gt; 32*8*8</span></span><br><span class="line">        )</span><br><span class="line">        self.conv3 = torch.nn.Sequential(</span><br><span class="line">            torch.nn.Conv2d(<span class="number">32</span>, <span class="number">64</span>, <span class="number">3</span>, padding=<span class="number">1</span>),  <span class="comment"># 32*8*8 -&gt; 64*8*8</span></span><br><span class="line">            torch.nn.ReLU(),</span><br><span class="line">            torch.nn.MaxPool2d(<span class="number">2</span>, <span class="number">2</span>)  <span class="comment"># 64*8*8 -&gt; 64*4*4</span></span><br><span class="line">        )</span><br><span class="line">        self.fc1 = torch.nn.Sequential(</span><br><span class="line">            torch.nn.Linear(<span class="number">64</span>*<span class="number">4</span>*<span class="number">4</span>, <span class="number">32</span>),</span><br><span class="line">            torch.nn.ReLU(),</span><br><span class="line">            <span class="comment"># torch.nn.Dropout()</span></span><br><span class="line">        )</span><br><span class="line">        self.fc2 = torch.nn.Linear(<span class="number">32</span>, <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        x = self.conv1(x)</span><br><span class="line">        x = self.conv2(x)</span><br><span class="line">        x = self.conv3(x)</span><br><span class="line">        x = x.view(<span class="number">-1</span>, <span class="number">64</span>*<span class="number">4</span>*<span class="number">4</span>)</span><br><span class="line">        x = self.fc1(x)</span><br><span class="line">        x = self.fc2(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line">net = Net()</span><br><span class="line">net.cuda()</span><br><span class="line"></span><br><span class="line">criterion = torch.nn.CrossEntropyLoss()</span><br><span class="line">optimizer = torch.optim.Adam(net.parameters(), lr=LR)</span><br></pre></td></tr></table></figure>
+
+<p>网络结构如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">Net(</span><br><span class="line">  (conv1): Sequential(</span><br><span class="line">    (<span class="number">0</span>): Conv2d(<span class="number">3</span>, <span class="number">16</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">    (<span class="number">1</span>): ReLU()</span><br><span class="line">    (<span class="number">2</span>): MaxPool2d(kernel_size=<span class="number">2</span>, stride=<span class="number">2</span>, padding=<span class="number">0</span>, dilation=<span class="number">1</span>, ceil_mode=<span class="literal">False</span>)</span><br><span class="line">  )</span><br><span class="line">  (conv2): Sequential(</span><br><span class="line">    (<span class="number">0</span>): Conv2d(<span class="number">16</span>, <span class="number">32</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">    (<span class="number">1</span>): ReLU()</span><br><span class="line">    (<span class="number">2</span>): MaxPool2d(kernel_size=<span class="number">2</span>, stride=<span class="number">2</span>, padding=<span class="number">0</span>, dilation=<span class="number">1</span>, ceil_mode=<span class="literal">False</span>)</span><br><span class="line">  )</span><br><span class="line">  (conv3): Sequential(</span><br><span class="line">    (<span class="number">0</span>): Conv2d(<span class="number">32</span>, <span class="number">64</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">    (<span class="number">1</span>): ReLU()</span><br><span class="line">    (<span class="number">2</span>): MaxPool2d(kernel_size=<span class="number">2</span>, stride=<span class="number">2</span>, padding=<span class="number">0</span>, dilation=<span class="number">1</span>, ceil_mode=<span class="literal">False</span>)</span><br><span class="line">  )</span><br><span class="line">  (fc1): Sequential(</span><br><span class="line">    (<span class="number">0</span>): Linear(in_features=<span class="number">1024</span>, out_features=<span class="number">32</span>, bias=<span class="literal">True</span>)</span><br><span class="line">    (<span class="number">1</span>): ReLU()</span><br><span class="line">  )</span><br><span class="line">  (fc2): Linear(in_features=<span class="number">32</span>, out_features=<span class="number">10</span>, bias=<span class="literal">True</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>网络创建了3个卷积层，1个全连接层</p>
+<h5 id="CNN-2"><a href="#CNN-2" class="headerlink" title="CNN_2"></a>CNN_2</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">LR = <span class="number">0.005</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Net</span><span class="params">(torch.nn.Module)</span>:</span></span><br><span class="line">    <span class="string">"""Some Information about CNN"""</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        super(Net, self).__init__()</span><br><span class="line">        self.conv1 = torch.nn.Sequential(</span><br><span class="line">            torch.nn.Conv2d(<span class="number">3</span>, <span class="number">16</span>, <span class="number">3</span>, padding=<span class="number">1</span>),  <span class="comment"># 3*32*32 -&gt; 16*32*32</span></span><br><span class="line">            torch.nn.ReLU(),</span><br><span class="line">        )</span><br><span class="line">        self.conv2 = torch.nn.Sequential(</span><br><span class="line">            torch.nn.Conv2d(<span class="number">16</span>, <span class="number">32</span>, <span class="number">3</span>, padding=<span class="number">1</span>),  <span class="comment"># 16*32*32 -&gt; 32*32*32</span></span><br><span class="line">            torch.nn.ReLU(),</span><br><span class="line">            torch.nn.MaxPool2d(<span class="number">2</span>, <span class="number">2</span>)  <span class="comment"># 32*32*32-&gt; 32*16*16</span></span><br><span class="line">        )</span><br><span class="line">        self.conv3 = torch.nn.Sequential(</span><br><span class="line">            torch.nn.Conv2d(<span class="number">32</span>, <span class="number">64</span>, <span class="number">3</span>, padding=<span class="number">1</span>),  <span class="comment">#  32*16*16 -&gt; 64*16*16</span></span><br><span class="line">            torch.nn.ReLU(),</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        self.conv4 = torch.nn.Sequential(</span><br><span class="line">            torch.nn.Conv2d(<span class="number">64</span>, <span class="number">128</span>, <span class="number">3</span>, padding=<span class="number">1</span>),  <span class="comment">#  64*16*16 -&gt; 128*16*16</span></span><br><span class="line">            torch.nn.ReLU(),</span><br><span class="line">            torch.nn.MaxPool2d(<span class="number">2</span>, <span class="number">2</span>)  <span class="comment"># 128*16*16 -&gt; 128*8*8</span></span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        self.conv5 = torch.nn.Sequential(</span><br><span class="line">            torch.nn.Conv2d(<span class="number">128</span>, <span class="number">256</span>, <span class="number">3</span>, padding=<span class="number">1</span>),  <span class="comment">#  128*8*8 -&gt; 256*8*8</span></span><br><span class="line">            torch.nn.ReLU(),</span><br><span class="line">            torch.nn.MaxPool2d(<span class="number">2</span>, <span class="number">2</span>)  <span class="comment"># 256*8*8 -&gt; 256*4*4</span></span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        self.gap = torch.nn.AvgPool2d(<span class="number">4</span>,<span class="number">4</span>)</span><br><span class="line">        self.fc = torch.nn.Linear(<span class="number">256</span>, <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        x = self.conv1(x)</span><br><span class="line">        x = self.conv2(x)</span><br><span class="line">        x = self.conv3(x)</span><br><span class="line">        x = self.conv4(x)</span><br><span class="line">        x = self.conv5(x)</span><br><span class="line">        x = self.gap(x)</span><br><span class="line">        x = x.view(<span class="number">-1</span>, <span class="number">256</span>)</span><br><span class="line">        x = self.fc(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line">net = Net()</span><br><span class="line">net.cuda()</span><br><span class="line"></span><br><span class="line">criterion = torch.nn.CrossEntropyLoss()</span><br><span class="line">optimizer = torch.optim.Adam(net.parameters(), lr=LR)</span><br></pre></td></tr></table></figure>
+
+<p>打印网络如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Net(</span><br><span class="line">  (conv1): Sequential(</span><br><span class="line">    (<span class="number">0</span>): Conv2d(<span class="number">3</span>, <span class="number">16</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">    (<span class="number">1</span>): ReLU()</span><br><span class="line">  )</span><br><span class="line">  (conv2): Sequential(</span><br><span class="line">    (<span class="number">0</span>): Conv2d(<span class="number">16</span>, <span class="number">32</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">    (<span class="number">1</span>): ReLU()</span><br><span class="line">    (<span class="number">2</span>): MaxPool2d(kernel_size=<span class="number">2</span>, stride=<span class="number">2</span>, padding=<span class="number">0</span>, dilation=<span class="number">1</span>, ceil_mode=<span class="literal">False</span>)</span><br><span class="line">  )</span><br><span class="line">  (conv3): Sequential(</span><br><span class="line">    (<span class="number">0</span>): Conv2d(<span class="number">32</span>, <span class="number">64</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">    (<span class="number">1</span>): ReLU()</span><br><span class="line">  )</span><br><span class="line">  (conv4): Sequential(</span><br><span class="line">    (<span class="number">0</span>): Conv2d(<span class="number">64</span>, <span class="number">128</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">    (<span class="number">1</span>): ReLU()</span><br><span class="line">    (<span class="number">2</span>): MaxPool2d(kernel_size=<span class="number">2</span>, stride=<span class="number">2</span>, padding=<span class="number">0</span>, dilation=<span class="number">1</span>, ceil_mode=<span class="literal">False</span>)</span><br><span class="line">  )</span><br><span class="line">  (conv5): Sequential(</span><br><span class="line">    (<span class="number">0</span>): Conv2d(<span class="number">128</span>, <span class="number">256</span>, kernel_size=(<span class="number">3</span>, <span class="number">3</span>), stride=(<span class="number">1</span>, <span class="number">1</span>), padding=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">    (<span class="number">1</span>): ReLU()</span><br><span class="line">    (<span class="number">2</span>): MaxPool2d(kernel_size=<span class="number">2</span>, stride=<span class="number">2</span>, padding=<span class="number">0</span>, dilation=<span class="number">1</span>, ceil_mode=<span class="literal">False</span>)</span><br><span class="line">  )</span><br><span class="line">  (gap): AvgPool2d(kernel_size=<span class="number">4</span>, stride=<span class="number">4</span>, padding=<span class="number">0</span>)</span><br><span class="line">  (fc): Linear(in_features=<span class="number">256</span>, out_features=<span class="number">10</span>, bias=<span class="literal">True</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>创建了5个卷积层，最后使用GAP连接输出层</p>
+<h4 id="定义训练函数和测试函数"><a href="#定义训练函数和测试函数" class="headerlink" title="定义训练函数和测试函数"></a>定义训练函数和测试函数</h4><p>为了方便对不同的网络进行训练和测试，因此，定义一个通用的训练函数和测试函数，方便使用</p>
+<h5 id="定义训练函数"><a href="#定义训练函数" class="headerlink" title="定义训练函数"></a>定义训练函数</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">def train(model, criterion, optimizer, trainloader, epochs&#x3D;5, log_interval&#x3D;50):</span><br><span class="line">    print(&#39;----- Train Start -----&#39;)</span><br><span class="line">    for epoch in range(epochs):</span><br><span class="line">        running_loss &#x3D; 0.0</span><br><span class="line">        for step, (batch_x, batch_y) in enumerate(trainloader):</span><br><span class="line">            batch_x, batch_y &#x3D; batch_x.cuda(), batch_y.cuda()</span><br><span class="line"></span><br><span class="line">            output &#x3D; model(batch_x)</span><br><span class="line"></span><br><span class="line">            optimizer.zero_grad()</span><br><span class="line">            loss &#x3D; criterion(output, batch_y)</span><br><span class="line">            loss.backward()</span><br><span class="line">            optimizer.step()</span><br><span class="line"></span><br><span class="line">            running_loss +&#x3D; loss.item()</span><br><span class="line">            if step % log_interval &#x3D;&#x3D; (log_interval-1):</span><br><span class="line">                print(&#39;[%d, %5d] loss: %.4f&#39; %</span><br><span class="line">                      (epoch + 1, step + 1, running_loss &#x2F; log_interval))</span><br><span class="line">                running_loss &#x3D; 0.0</span><br><span class="line">    print(&#39;----- Train Finished -----&#39;)</span><br></pre></td></tr></table></figure>
+
+<h5 id="定义测试函数"><a href="#定义测试函数" class="headerlink" title="定义测试函数"></a>定义测试函数</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(model, testloader)</span>:</span></span><br><span class="line">    print(<span class="string">'------ Test Start -----'</span>)</span><br><span class="line"></span><br><span class="line">    correct = <span class="number">0</span></span><br><span class="line">    total = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> torch.no_grad():</span><br><span class="line">        <span class="keyword">for</span> test_x, test_y <span class="keyword">in</span> testloader:</span><br><span class="line">            images, labels = test_x.cuda(), test_y.cuda()</span><br><span class="line">            output = model(images)</span><br><span class="line">            _, predicted = torch.max(output.data, <span class="number">1</span>)</span><br><span class="line">            total += labels.size(<span class="number">0</span>)</span><br><span class="line">            correct += (predicted == labels).sum().item()</span><br><span class="line"></span><br><span class="line">    accuracy = <span class="number">100</span> * correct / total</span><br><span class="line">    print(<span class="string">'Accuracy of the network is: %.4f %%'</span> % accuracy)</span><br><span class="line">    <span class="keyword">return</span> accuracy</span><br></pre></td></tr></table></figure>
+
+<h4 id="在测试集上运行网络"><a href="#在测试集上运行网络" class="headerlink" title="在测试集上运行网络"></a>在测试集上运行网络</h4><p>测试CNN_1网络</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">train(CNN_1.net, CNN_1.criterion, CNN_1.optimizer, trainloader, epochs=EPOCHS)</span><br><span class="line">test(CNN_1.net, testloader)</span><br></pre></td></tr></table></figure>
+
+<p>测试CNN_2网络</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">train(CNN_2.net, CNN_2.criterion, CNN_2.optimizer, trainloader, epochs=EPOCHS)</span><br><span class="line">test(CNN_2.net, testloader)</span><br></pre></td></tr></table></figure>
+
+<h4 id="训练结果"><a href="#训练结果" class="headerlink" title="训练结果"></a>训练结果</h4><p>CNN_1在10代训练后，在测试集准确率上能够达到71.1100 %</p>
+<p>CNN_2在10代训练后，在测试集准确率上能够达到75.6700 %</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p>链接：<a href="https://pan.baidu.com/s/1rOmiE35rQnszmYyyN6h16Q" target="_blank" rel="noopener">https://pan.baidu.com/s/1rOmiE35rQnszmYyyN6h16Q</a><br>提取码：zqf2<br>复制这段内容后打开百度网盘手机App，操作更方便哦</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/zqyadam">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener">辽ICP备19014125号-3</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud" target="_blank" rel="noopener">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = ""
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

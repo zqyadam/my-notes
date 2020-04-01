@@ -11,7 +11,7 @@
 
     <title>
         
-        
+        使用Hexo时，兼容typora相对路径的图片 - undefined
         
     </title>
 
@@ -69,7 +69,7 @@
                     <span>标签</span>
                 </a>
             </li>
-            <li  class=active >
+            <li >
                 <a href="/archives">
                     <i class="iconfont icon-guidang2"></i>
                     <span>存档</span>
@@ -84,6 +84,10 @@
             
         </ul>
     </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#使用Hexo时，兼容typora相对路径的图片"><span class="toc-text">使用Hexo时，兼容typora相对路径的图片</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#typora设置"><span class="toc-text">typora设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装插件hexo-typora-image"><span class="toc-text">安装插件hexo-typora-image</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#config-yml"><span class="toc-text">_config.yml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用方法"><span class="toc-text">使用方法</span></a></li></ol></li></ol>
+</div>
     
 </div>
 
@@ -111,110 +115,49 @@
         
 
 
-<!-- 归档列表 -->
+<div class="post-container">
+    <div class="post-title">
+        使用Hexo时，兼容typora相对路径的图片
+    </div>
 
-<div class="archives-container">
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2020-04-01 23:34:08</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#typora" title="typora">typora</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h1 id="使用Hexo时，兼容typora相对路径的图片"><a href="#使用Hexo时，兼容typora相对路径的图片" class="headerlink" title="使用Hexo时，兼容typora相对路径的图片"></a>使用Hexo时，兼容typora相对路径的图片</h1><p>需要插件：<a href="https://www.npmjs.com/package/hexo-typora-image" target="_blank" rel="noopener">https://www.npmjs.com/package/hexo-typora-image</a></p>
+<h2 id="typora设置"><a href="#typora设置" class="headerlink" title="typora设置"></a>typora设置</h2><p><img src="image-20200401232358780.png" alt=""></p>
+<p>参照上图设置</p>
+<h2 id="安装插件hexo-typora-image"><a href="#安装插件hexo-typora-image" class="headerlink" title="安装插件hexo-typora-image"></a>安装插件hexo-typora-image</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev hexo-typora-image</span><br></pre></td></tr></table></figure>
 
-<div class="one-tag-list">
-                <span class="fa fa-calendar-times-o listing-seperator" id="2020">
-                    <span class="tag-text">2020</span>
-                </span>
-    <ul>
-        
-        <!-- <li class="listing-item">
-        <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-        <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-        </li> -->
-        <li >
-            <span>04-01</span>
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2020/04/01/使用Hexo时，兼容typora相对路径的图片/">
-                        <span>
-                            使用Hexo时，兼容typora相对路径的图片
-                        </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </li>
-        
-        <!-- <li class="listing-item">
-        <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-        <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-        </li> -->
-        <li >
-            <span>04-01</span>
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2020/04/01/Windows10下安装GPU版TensorFlow-显卡RTX2060-过程记录/">
-                        <span>
-                            Windows10下安装GPU版TensorFlow(显卡RTX2060)过程记录
-                        </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </li>
-        
-        <!-- <li class="listing-item">
-        <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-        <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-        </li> -->
-        <li >
-            <span>04-01</span>
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2020/04/01/VSCode中添加提示选择快捷键/">
-                        <span>
-                            VSCode中添加提示选择快捷键
-                        </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </li>
-        
-        <!-- <li class="listing-item">
-        <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-        <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-        </li> -->
-        <li >
-            <span>04-01</span>
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2020/04/01/Nginx配置端口转发/">
-                        <span>
-                            Nginx配置端口转发
-                        </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </li>
-        
-        <!-- <li class="listing-item">
-        <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-        <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-        </li> -->
-        <li >
-            <span>04-01</span>
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2020/04/01/基于PyTorch的CIFAR10小记/">
-                        <span>
-                            基于PyTorch的CIFAR10小记
-                        </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </li>
-        
-        <!-- <li class="listing-item">
-        <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-        <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-        </li> -->
-        <li >
-            <span>04-01</span>
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/2020/04/01/Electron-Windows10打包小记/">
-                        <span>
-                            Electron Windows10打包小记
-                        </span>
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </li>
-        
 
-    </ul>
-</div>
 
+<p>在<code>scaffolds/post.md</code>中增加<code>typora-copy-images-to: 使用Hexo时，兼容typora相对路径的图片</code>，更改完的内容如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">&#123;&#123;</span> <span class="string">title</span> <span class="string">&#125;&#125;</span></span><br><span class="line"><span class="attr">date:</span> <span class="string">&#123;&#123;</span> <span class="string">date</span> <span class="string">&#125;&#125;</span></span><br><span class="line"><span class="attr">typora-copy-images-to:</span> <span class="string">&#123;&#123;</span> <span class="string">title&#125;&#125;</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="config-yml"><a href="#config-yml" class="headerlink" title="_config.yml"></a>_config.yml</h2><p>将<code>_config.yml</code>中的<code>post_asset_folder</code>改为<code>post_asset_folder: true</code></p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>将<code>post_asset_folder</code>改为True后， 使用<code>hexo new post 文章标题</code>时，会生成一个与文章标题一样的文件夹，用来放置图片，将文章章所有的图片放置在这个文件夹下就可以了。</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
 </div>
 
     </div>
@@ -271,7 +214,7 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = ""
     window.hexo_root = "/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 

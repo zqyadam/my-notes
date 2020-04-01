@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Nginx配置端口转发 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar radius">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Adam Zuo</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Nginx配置端口转发"><span class="toc-text">Nginx配置端口转发</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CentOS安装Nginx"><span class="toc-text">CentOS安装Nginx</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-添加Nginx到YUM源"><span class="toc-text">1.添加Nginx到YUM源</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-安装Nginx"><span class="toc-text">2.安装Nginx</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Nginx基本命令"><span class="toc-text">3.Nginx基本命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置Nginx转发端口"><span class="toc-text">配置Nginx转发端口</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Nginx配置端口转发
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2020-04-01 23:16:27</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Nginx" title="Nginx">Nginx</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h1 id="Nginx配置端口转发"><a href="#Nginx配置端口转发" class="headerlink" title="Nginx配置端口转发"></a>Nginx配置端口转发</h1><h2 id="CentOS安装Nginx"><a href="#CentOS安装Nginx" class="headerlink" title="CentOS安装Nginx"></a>CentOS安装Nginx</h2><h3 id="1-添加Nginx到YUM源"><a href="#1-添加Nginx到YUM源" class="headerlink" title="1.添加Nginx到YUM源"></a>1.添加Nginx到YUM源</h3><p>添加CentOS 7 Nginx yum资源库,打开终端,使用以下命令:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-安装Nginx"><a href="#2-安装Nginx" class="headerlink" title="2.安装Nginx"></a>2.安装Nginx</h4><p>在你的CentOS 7 服务器中使用yum命令从Nginx源服务器中获取来安装Nginx：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y nginx</span><br></pre></td></tr></table></figure>
+<p>Nginx将完成安装在你的CentOS 7 服务器中。</p>
+<p><strong>参考文档</strong>：<a href="https://blog.csdn.net/u012486840/article/details/52610320" target="_blank" rel="noopener">https://blog.csdn.net/u012486840/article/details/52610320</a></p>
+<h3 id="3-Nginx基本命令"><a href="#3-Nginx基本命令" class="headerlink" title="3.Nginx基本命令"></a>3.Nginx基本命令</h3><p>查看Nginx的版本号：<code>nginx -V</code></p>
+<p>启动Nginx：<code>nginx</code></p>
+<p>快速停止或关闭Nginx：<code>nginx -s stop</code></p>
+<p>正常停止或关闭Nginx：<code>nginx -s quit</code></p>
+<p>配置文件修改重装载命令：<code>nginx -s reload</code></p>
+<p><strong>参考文档</strong>：<a href="https://blog.csdn.net/u010739551/article/details/51654859" target="_blank" rel="noopener">https://blog.csdn.net/u010739551/article/details/51654859</a></p>
+<h2 id="配置Nginx转发端口"><a href="#配置Nginx转发端口" class="headerlink" title="配置Nginx转发端口"></a>配置Nginx转发端口</h2><p>进入<code>/etc/nginx/conf.d</code>目录下，编辑<code>default.conf</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"># 配置负载均衡池</span><br><span class="line"># server_1负载均衡池，指向8001端口</span><br><span class="line">upstream server_1&#123;</span><br><span class="line">    server 127.0.0.1:8001;</span><br><span class="line">&#125;</span><br><span class="line"># server_2负载均衡池，指向8080端口</span><br><span class="line">upstream server_2&#123;</span><br><span class="line">    server 127.0.0.1:8080;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># https负载均衡池，指向8080端口</span><br><span class="line">upstream server_1_https&#123;</span><br><span class="line">    server 127.0.0.1:8002;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  yun.hoho.site; # 访问的域名</span><br><span class="line">		return 301 https:&#x2F;&#x2F;$server_name$request_uri; # 跳转到https</span><br><span class="line">   </span><br><span class="line">    # location &#x2F; &#123;</span><br><span class="line">    #     proxy_set_header Host $host;</span><br><span class="line">    #     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">    #     proxy_pass https:&#x2F;&#x2F;server_1_https;</span><br><span class="line">    # &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># SSL配置</span><br><span class="line">server &#123;</span><br><span class="line">    listen       443 ssl; # 开启ssl</span><br><span class="line">    server_name  yun.hoho.site;</span><br><span class="line"></span><br><span class="line">    #指定PEM格式的证书文件   </span><br><span class="line">    ssl_certificate      &#x2F;projects&#x2F;webrtc&#x2F;cert&#x2F;2673915_yun.hoho.site.pem;   </span><br><span class="line">    #指定PEM格式的私钥文件  </span><br><span class="line">    ssl_certificate_key  &#x2F;projects&#x2F;webrtc&#x2F;cert&#x2F;2673915_yun.hoho.site.key;</span><br><span class="line">    </span><br><span class="line">    #将所有请求转发给server_1_https池的应用处理</span><br><span class="line">    location &#x2F; &#123;</span><br><span class="line">        proxy_set_header Host $host;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_pass https:&#x2F;&#x2F;server_1_https;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  o.hoho.site;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    #将所有请求转发给demo_pool池的应用处理</span><br><span class="line">    location &#x2F; &#123;</span><br><span class="line">        proxy_set_header Host $host;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_pass http:&#x2F;&#x2F;server_2;   # 转发到server_2负载均衡池</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>创建2个负载均衡池，分别指向本地的两个端口</p>
+</li>
+<li><p>然后创建两个server，根据来访域名，分别进行转发</p>
+</li>
+</ol>
+<p><strong>参考文档</strong>：<a href="https://www.cnblogs.com/zhaoyingjie/p/7248678.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhaoyingjie/p/7248678.html</a></p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/zqyadam">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener">辽ICP备19014125号-3</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud" target="_blank" rel="noopener">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = ""
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>

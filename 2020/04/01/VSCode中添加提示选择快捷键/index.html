@@ -11,7 +11,7 @@
 
     <title>
         
-        
+        VSCode中添加提示选择快捷键 - undefined
         
     </title>
 
@@ -57,7 +57,7 @@
     </div>
     <div class="contents" id="nav-content">
         <ul>
-            <li  class=active >
+            <li >
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
                     <span>主页</span>
@@ -85,6 +85,10 @@
         </ul>
     </div>
     
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#VSCode中添加提示选择快捷键"><span class="toc-text">VSCode中添加提示选择快捷键</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改方法"><span class="toc-text">修改方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#效果"><span class="toc-text">效果</span></a></li></ol></li></ol>
+</div>
+    
 </div>
 
 
@@ -109,133 +113,40 @@
     <div class="index-middle">
         <!-- Main Content -->
         
-<div class="post-preview-container" style="min-height: 720px">
-    
-    <div class="post-preview">
-        <div class="post-time">2020-04-01</div>
-        <div class="post-info">
-            <a href="/2020/04/01/使用Hexo时，兼容typora相对路径的图片/">
-                <h3>
-                    使用Hexo时，兼容typora相对路径的图片
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#typora" title="typora">typora</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+
+<div class="post-container">
+    <div class="post-title">
+        VSCode中添加提示选择快捷键
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2020-04-01</div>
-        <div class="post-info">
-            <a href="/2020/04/01/Windows10下安装GPU版TensorFlow-显卡RTX2060-过程记录/">
-                <h3>
-                    Windows10下安装GPU版TensorFlow(显卡RTX2060)过程记录
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#RTX2060" title="RTX2060">RTX2060</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#TensorFlow" title="TensorFlow">TensorFlow</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2020-04-01 23:18:12</span></span>
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2020-04-01</div>
-        <div class="post-info">
-            <a href="/2020/04/01/VSCode中添加提示选择快捷键/">
-                <h3>
-                    VSCode中添加提示选择快捷键
-                </h3>
-            </a>
-            <p>
-                
-            </p>
+    <div class="post-content ">
+        <h1 id="VSCode中添加提示选择快捷键"><a href="#VSCode中添加提示选择快捷键" class="headerlink" title="VSCode中添加提示选择快捷键"></a>VSCode中添加提示选择快捷键</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在<code>VSCode</code>中，在输入一些字符后，会自动给出一些智能提示，如果想要的提示不是在第一个位置的话，需要使用键盘的上下箭头进行选择，增加了手臂的移动距离，非常不方便，这里通过修改<code>VSCode</code>中的快捷键解决这个问题</p>
+<h2 id="修改方法"><a href="#修改方法" class="headerlink" title="修改方法"></a>修改方法</h2><p>打开<code>VSCode</code>中的快捷键设置（过程略），增加如下快捷键</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"key"</span>: <span class="string">"ctrl+i"</span>,</span><br><span class="line">   <span class="attr">"command"</span>: <span class="string">"selectPrevSuggestion"</span>,</span><br><span class="line">   <span class="attr">"when"</span>: <span class="string">"editorTextFocus &amp;&amp; suggestWidgetVisible"</span></span><br><span class="line"> &#125;, &#123;</span><br><span class="line">   "key": "ctrl+k",</span><br><span class="line">   "command": "selectNextSuggestion",</span><br><span class="line">   "when": "editorTextFocus &amp;&amp; suggestWidgetVisible"</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>在编写<code>Python</code>代码时，需要经常创建函数，输入def后，第一提示并不是我们想要的代码片段，以前需要使用键盘下箭头移动到第二个提示上去，将快捷键修改后，只需要按下<code>Ctrl+k</code>就可以选择到第二个提示，方便快捷，好用~</p>
+<p><img src="1552821205251.png" alt="1552821205251"></p>
+
+        
+        <br />
+        <div id="comment-container">
         </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2020-04-01</div>
-        <div class="post-info">
-            <a href="/2020/04/01/Nginx配置端口转发/">
-                <h3>
-                    Nginx配置端口转发
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Nginx" title="Nginx">Nginx</a>
-                <span>/</span>
-                
-                
-            </p>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
         </div>
+
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2020-04-01</div>
-        <div class="post-info">
-            <a href="/2020/04/01/基于PyTorch的CIFAR10小记/">
-                <h3>
-                    基于PyTorch的CIFAR10小记
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#pytorch" title="pytorch">pytorch</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#cifar-10" title="cifar-10">cifar-10</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2020-04-01</div>
-        <div class="post-info">
-            <a href="/2020/04/01/Electron-Windows10打包小记/">
-                <h3>
-                    Electron Windows10打包小记
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Electron" title="Electron">Electron</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
 </div>
-<ul class="pager">
-    
-    
-</ul>
 
     </div>
 </div>
@@ -291,7 +202,7 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = ""
     window.hexo_root = "/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 

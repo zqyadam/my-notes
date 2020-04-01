@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Windows10下安装GPU版TensorFlow(显卡RTX2060)过程记录 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar radius">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Adam Zuo</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Windows10下安装GPU版TensorFlow-显卡RTX2060-过程记录"><span class="toc-text">Windows10下安装GPU版TensorFlow(显卡RTX2060)过程记录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-miniconda安装"><span class="toc-text">1. miniconda安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Visual-Studio安装"><span class="toc-text">2.Visual Studio安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-CUDA10-0下载与安装"><span class="toc-text">3. CUDA10.0下载与安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-cuDNN7-3-1下载与安装"><span class="toc-text">4. cuDNN7.3.1下载与安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-TensorFlow下载与安装"><span class="toc-text">5.TensorFlow下载与安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-TensorFlow测试"><span class="toc-text">6. TensorFlow测试</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Windows10下安装GPU版TensorFlow(显卡RTX2060)过程记录
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2020-04-01 23:21:05</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#RTX2060" title="RTX2060">RTX2060</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#TensorFlow" title="TensorFlow">TensorFlow</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h1 id="Windows10下安装GPU版TensorFlow-显卡RTX2060-过程记录"><a href="#Windows10下安装GPU版TensorFlow-显卡RTX2060-过程记录" class="headerlink" title="Windows10下安装GPU版TensorFlow(显卡RTX2060)过程记录"></a>Windows10下安装GPU版TensorFlow(显卡RTX2060)过程记录</h1><h2 id="1-miniconda安装"><a href="#1-miniconda安装" class="headerlink" title="1. miniconda安装"></a>1. miniconda安装</h2><p>下载地址：<a href="https://conda.io/en/latest/miniconda.html" target="_blank" rel="noopener">https://conda.io/en/latest/miniconda.html</a></p>
+<p>我这里安装的是Python3.7 64-bit版</p>
+<p>下载完成后创建一个conda环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create --name tf python=3</span><br></pre></td></tr></table></figure>
+
+<p>然后进入环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">activate tf</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-Visual-Studio安装"><a href="#2-Visual-Studio安装" class="headerlink" title="2.Visual Studio安装"></a>2.Visual Studio安装</h2><p>下载地址：<a href="https://visualstudio.microsoft.com/zh-hans/" target="_blank" rel="noopener">https://visualstudio.microsoft.com/zh-hans/</a></p>
+<p>我这里下载的是Windows Community 2017版，下载完成后双击进行安装，安装C++的编译器。</p>
+<h2 id="3-CUDA10-0下载与安装"><a href="#3-CUDA10-0下载与安装" class="headerlink" title="3. CUDA10.0下载与安装"></a>3. CUDA10.0下载与安装</h2><p>目前，TensorFlow官方1.12版本还不支持CUDA 10.0版本，但是万能的github上有我们所需要的，这个后面再说。</p>
+<p>这里先安装CUDA 10.0版本。下载地址：<a href="https://developer.nvidia.com/cuda-downloads" target="_blank" rel="noopener">https://developer.nvidia.com/cuda-downloads</a></p>
+<p><img src="1549646672662.png" alt="1549646672662"></p>
+<p>我这里偷懒，选择的是network版本，选择local版本也是一样的，就是安装包体积大了些。</p>
+<h2 id="4-cuDNN7-3-1下载与安装"><a href="#4-cuDNN7-3-1下载与安装" class="headerlink" title="4. cuDNN7.3.1下载与安装"></a>4. cuDNN7.3.1下载与安装</h2><p>选择cuDNN 7.3.1版本也是按照后面选择的TensorFlow版本所要求的。</p>
+<p>下载地址：<a href="https://developer.nvidia.com/rdp/cudnn-archive，选择[cuDNN" target="_blank" rel="noopener">https://developer.nvidia.com/rdp/cudnn-archive，选择[cuDNN</a> v7.3.1 Library for Windows 10](<a href="https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v7.3.1/prod/10.0_2018927/cudnn-10.0-windows10-x64-v7.3.1.20" target="_blank" rel="noopener">https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v7.3.1/prod/10.0_2018927/cudnn-10.0-windows10-x64-v7.3.1.20</a>)</p>
+<p><img src="1549646880293.png" alt="1549646880293"></p>
+<h2 id="5-TensorFlow下载与安装"><a href="#5-TensorFlow下载与安装" class="headerlink" title="5.TensorFlow下载与安装"></a>5.TensorFlow下载与安装</h2><p>由于TensorFlow官方1.12版本还不支持cuda 10.0版本，所以还是得求助github，附github地址：<a href="https://github.com/fo40225/tensorflow-windows-wheel" target="_blank" rel="noopener">https://github.com/fo40225/tensorflow-windows-wheel</a></p>
+<p>我这里选择的是：1.12.0\py37\GPU\cuda100cudnn73avx2 版本，从下图中可以看到，其支持的版本是CUDA 10.0.130_411.31，cuDNN 7.3.1.20，这也是我之前在安装CUDA和cuDNN是所选择的版本。</p>
+<p><img src="1549646396137.png" alt="1549646396137"></p>
+<p>下载完成后，进入下载文件的文件夹，进入相应的conda环境，然后使用下列命令进行安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install tensorflow_gpu-1.12.0-cp37-cp37m-win_amd64.whl</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>conda list</code>查看安装情况，看到了<code>tensorflow-gpu</code>说明已经安装完成。</p>
+<p><img src="1549681992440.png" alt="1549681992440"></p>
+<h2 id="6-TensorFlow测试"><a href="#6-TensorFlow测试" class="headerlink" title="6. TensorFlow测试"></a>6. TensorFlow测试</h2><p><img src="1549682075762.png" alt="1549682075762"></p>
+<p>在python环境下，引入tensrflow没有问题，下面测试一下tensorflow是否能够调用GPU。</p>
+<p>测试代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">a &#x3D; tf.constant([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], shape&#x3D;[2, 3], name&#x3D;&#39;a&#39;)</span><br><span class="line">b &#x3D; tf.constant([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], shape&#x3D;[3, 2], name&#x3D;&#39;b&#39;)</span><br><span class="line">c &#x3D; tf.matmul(a, b)</span><br><span class="line">sess &#x3D; tf.Session(config&#x3D;tf.ConfigProto(log_device_placement&#x3D;True))</span><br><span class="line">print(sess.run(c))</span><br></pre></td></tr></table></figure>
+
+<p><img src="1549682303989.png" alt="1549682303989"></p>
+<p>图中<code>device:GPU:0</code>表示调用了GPU。</p>
+<p>安装成功<del>~</del> ^_^</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/zqyadam">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener">辽ICP备19014125号-3</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud" target="_blank" rel="noopener">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = ""
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
