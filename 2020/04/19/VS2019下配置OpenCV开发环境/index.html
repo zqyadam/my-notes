@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        VS2019下配置OpenCV开发环境 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i>  </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar radius">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>个人开发练习记录</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#VS2019下配置OpenCV开发环境"><span class="toc-text">VS2019下配置OpenCV开发环境</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装VS2019"><span class="toc-text">安装VS2019</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装OpenCV"><span class="toc-text">安装OpenCV</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载OpenCV"><span class="toc-text">下载OpenCV</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置环境变量"><span class="toc-text">设置环境变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VS2019的配置"><span class="toc-text">VS2019的配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#新建一个项目"><span class="toc-text">新建一个项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#改为x64程序"><span class="toc-text">改为x64程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加属性表"><span class="toc-text">添加属性表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置属性表"><span class="toc-text">配置属性表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#设置包含目录"><span class="toc-text">设置包含目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#设置库目录"><span class="toc-text">设置库目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#设置链接器"><span class="toc-text">设置链接器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试"><span class="toc-text">测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#导出模板"><span class="toc-text">导出模板</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#导出模板-1"><span class="toc-text">导出模板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#试验模板"><span class="toc-text">试验模板</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        VS2019下配置OpenCV开发环境
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2020-04-19 18:08:44</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#OpenCV" title="OpenCV">OpenCV</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#VS2019" title="VS2019">VS2019</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h1 id="VS2019下配置OpenCV开发环境"><a href="#VS2019下配置OpenCV开发环境" class="headerlink" title="VS2019下配置OpenCV开发环境"></a>VS2019下配置OpenCV开发环境</h1><h2 id="安装VS2019"><a href="#安装VS2019" class="headerlink" title="安装VS2019"></a>安装VS2019</h2><p>下载地址：<a href="https://visualstudio.microsoft.com/zh-hans/vs/" target="_blank" rel="noopener">https://visualstudio.microsoft.com/zh-hans/vs/</a></p>
+<p>建议下载Community版本</p>
+<p><img src="image-20200419170604971.png" alt="image-20200419170604971"></p>
+<p>然后安装，安装过程<strong>略</strong>。</p>
+<h2 id="安装OpenCV"><a href="#安装OpenCV" class="headerlink" title="安装OpenCV"></a>安装OpenCV</h2><h3 id="下载OpenCV"><a href="#下载OpenCV" class="headerlink" title="下载OpenCV"></a>下载OpenCV</h3><p>下载地址：<a href="https://www.opencv.org/releases.html" target="_blank" rel="noopener">https://www.opencv.org/releases.html</a> 或者 <a href="https://github.com/opencv/opencv/releases" target="_blank" rel="noopener">https://github.com/opencv/opencv/releases</a></p>
+<p>根据操作系统下载相应版本就行了，我这里是Windows10，所以下载的是<code>opencv-4.3.0-vc14_vc15.exe</code></p>
+<p><img src="image-20200419170900655.png" alt="image-20200419170900655"></p>
+<p>下载完成后，双击解压，我这里放在了D盘下的<code>D:\Program Files\opencv</code>，包含了如下内容：</p>
+<p><img src="image-20200419171118642.png" alt="image-20200419171118642"></p>
+<h3 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h3><p><img src="image-20200419171625932.png" alt="image-20200419171625932"></p>
+<h2 id="VS2019的配置"><a href="#VS2019的配置" class="headerlink" title="VS2019的配置"></a>VS2019的配置</h2><h3 id="新建一个项目"><a href="#新建一个项目" class="headerlink" title="新建一个项目"></a>新建一个项目</h3><p><img src="image-20200419171807623.png" alt="image-20200419171807623"></p>
+<p><img src="image-20200419171847127.png" alt="image-20200419171847127"></p>
+<h3 id="改为x64程序"><a href="#改为x64程序" class="headerlink" title="改为x64程序"></a>改为<code>x64</code>程序</h3><p>由于OpenCV先在不支持32位系统，所以需要将其改为<code>x64</code>程序</p>
+<p><img src="image-20200419172042738.png" alt="image-20200419172042738"></p>
+<p>最好将<code>x86</code>删掉，步骤如下：</p>
+<p><img src="image-20200419172214611.png" alt="image-20200419172214611"></p>
+<p><img src="image-20200419172231572.png" alt="image-20200419172231572"></p>
+<p><img src="image-20200419172314579.png" alt="image-20200419172314579"></p>
+<h3 id="添加属性表"><a href="#添加属性表" class="headerlink" title="添加属性表"></a>添加属性表</h3><p>在<code>属性管理器</code>中添加新的属性表</p>
+<p><img src="image-20200419172520241.png" alt="image-20200419172520241"></p>
+<p>属性表命名按照<code>OpenCV4.3_DEBUG.props</code>方式命名，这是DEBUG模式下的命名，还有RELEASE模式下的命名，就为<code>OpenCV4.3_RELEASE.props</code>，文件的保存的路径我放在了OpenCV的根目录下了，也就是<code>D:\Program Files\opencv</code>，因为这个文件后续还会用到，所以没有放在项目目录下。</p>
+<p><img src="image-20200419172636916.png" alt="image-20200419172636916"></p>
+<p>添加完成后就是这样</p>
+<p><img src="image-20200419173200506.png" alt="image-20200419173200506"></p>
+<h3 id="配置属性表"><a href="#配置属性表" class="headerlink" title="配置属性表"></a>配置属性表</h3><p>双击打开<code>OpenCV4.3_DEBUG</code>，进入<code>VC++目录</code>，设置包<code>含目录</code>和<code>库目录</code></p>
+<p><img src="image-20200419173306589.png" alt="image-20200419173306589"></p>
+<h4 id="设置包含目录"><a href="#设置包含目录" class="headerlink" title="设置包含目录"></a>设置<code>包含目录</code></h4><p>首先设置<code>包含目录</code>，在里面新添加两个目录，分别是<code>OpenCV</code>根目录下的<code>build\include\opencv2</code>和<code>build\include</code>，这两个目录是用来在编程序时方便使用<code>#include &lt;opencv.hpp&gt;</code></p>
+<p><img src="image-20200419173448900.png" alt="image-20200419173448900"></p>
+<h4 id="设置库目录"><a href="#设置库目录" class="headerlink" title="设置库目录"></a>设置<code>库目录</code></h4><p>在<code>库目录</code>中，添加<code>OpenCV</code>根目录下的<code>build\x64\vc15\lib</code></p>
+<p><img src="image-20200419173848212.png" alt="image-20200419173848212"></p>
+<h4 id="设置链接器"><a href="#设置链接器" class="headerlink" title="设置链接器"></a>设置<code>链接器</code></h4><p>在<code>链接器</code>下的<code>输入</code>中，设置<code>附加依赖项</code></p>
+<p><img src="image-20200419174053741.png" alt="image-20200419174053741"></p>
+<p>首先进入OpenCV跟目录下的<code>build\x64\vc15\lib</code>,会看到两个<code>.lib</code>文件，分别为<code>opencv_world430d.lib</code>和<code>opencv_world430.lib</code>，其中带有d结尾的文件是在Debug模式下用的</p>
+<p><img src="image-20200419174516324.png" alt="image-20200419174516324"></p>
+<p>将<code>opencv_world430d.lib</code>添加到<code>附加依赖项</code>中</p>
+<p><img src="image-20200419174301068.png" alt="image-20200419174301068"></p>
+<p>上面针对的是Debug的属性表，对于Release的属性表，这里要填写不带d的那个文件名<code>opencv_world430.lib</code></p>
+<p>至此，属性表设置完成了</p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>随便找一张图片放在项目目录下，我这里使用的一张经典图片<code>lena.png</code></p>
+<p><img src="image-20200419174952740.png" alt="image-20200419174952740"></p>
+<p>在VS2019中添加如下代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv.hpp&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	cv::Mat img = cv::imread(<span class="string">"lena.png"</span>);</span><br><span class="line"></span><br><span class="line">	cv::imshow(<span class="string">"lena"</span>, img);</span><br><span class="line"></span><br><span class="line">	cv::waitKey(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">	cv::destroyAllWindows();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>按F5，可以看到图片显示出来了，说明开发环境已经搭建成功了</p>
+<p><img src="image-20200419175055821.png" alt="image-20200419175055821"></p>
+<h2 id="导出模板"><a href="#导出模板" class="headerlink" title="导出模板"></a>导出模板</h2><h3 id="导出模板-1"><a href="#导出模板-1" class="headerlink" title="导出模板"></a>导出模板</h3><p>如果每次使用都需要搭建一遍那就太麻烦了，不如将其做成模板，方便后续使用</p>
+<p>导出过程如下：</p>
+<p> <img src="VS2019%E4%B8%8B%E9%85%8D%E7%BD%AEOpenCV%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83.assets/image-20200419175244661.png" alt="image-20200419175244661"></p>
+<p><img src="image-20200419175259439.png" alt="image-20200419175259439"></p>
+<p><img src="image-20200419175357640.png" alt="image-20200419175357640"></p>
+<p>这样模板就导出完毕了。</p>
+<h3 id="试验模板"><a href="#试验模板" class="headerlink" title="试验模板"></a>试验模板</h3><p>新建项目时，选择<code>所有语言</code>，就可以看见刚才导出的OpenCV模板了，直接创建项目就可以了!</p>
+<p><img src="image-20200419175529593.png" alt="image-20200419175529593"></p>
+<p><strong>完</strong>🙂</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/zqyadam">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener">辽ICP备19014125号-3</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud" target="_blank" rel="noopener">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = ""
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
